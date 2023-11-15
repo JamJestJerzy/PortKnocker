@@ -61,7 +61,7 @@ function Build-Program
     $cppFileList = $cppFiles -join " "
     $version = Get-Version
     $outputFileName = Join-Path $outputFolder "PortKnocker-$version.exe"
-    $compileCommand = "g++ -o $outputFileName $cppFileList -I.\libcurl\include -static-libgcc -static-libstdc++ -lpthread -lws2_32 -Wcpp -w"
+    $compileCommand = "g++ -o $outputFileName $cppFileList -static-libgcc -static-libstdc++ -lpthread -lws2_32 -O3 -march=native -mtune=native -std=c++23" # g++ -o $outputFileName $cppFileList -static-libgcc -static-libstdc++ -lpthread -lws2_32 -Wcpp -w
 
     Invoke-Expression $compileCommand
 
